@@ -1,0 +1,27 @@
+{
+  "n": 10517,
+  "early_era": "1950_1970",
+  "K": 50,
+  "edge": 0.6,
+  "proxies": {
+    "dispersion": {
+      "spearman_rho": -0.1937,
+      "p": 2.0382297434584176e-89,
+      "partial_rho_given_freq": -0.2358,
+      "note": "neg=generic-stable"
+    },
+    "sense_clusters": {
+      "spearman_rho": -0.0663,
+      "p": 1.0003739570909956e-11,
+      "partial_rho_given_freq": -0.058,
+      "note": "pos=Law-of-Innovation"
+    },
+    "max_sim(top1)": {
+      "spearman_rho": -0.0747,
+      "p": 1.675371014960991e-14,
+      "partial_rho_given_freq": -0.2316,
+      "note": "tight region"
+    }
+  },
+  "sense_vs_dispersion_rho": 0.1506
+}

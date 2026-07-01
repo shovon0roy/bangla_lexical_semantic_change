@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite the paper and this archive."
+title: "Mapping the Semantic Frontier of Bangla (1950–2025): corpus, models, and code"
+authors:
+  - family-names: Chanda
+    given-names: Sagor
+    affiliation: "Bangladesh University of Engineering and Technology"
+  - family-names: Roy
+    given-names: Shovon
+    affiliation: "Bangladesh University of Engineering and Technology"
+  - family-names: Ali
+    given-names: Muhammad Masroor
+    affiliation: "Bangladesh University of Engineering and Technology"
+year: 2026
+version: "1.0.0"
+license: MIT
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21100721"
+    description: "Diachronic Bangla corpus, cleaned (Zenodo dataset)"
+repository-code: "https://github.com/shovon0roy/"   # update to the new repo URL
+keywords:
+  - lexical semantic change
+  - diachronic word embeddings
+  - Bangla
+  - Bengali
+  - low-resource NLP
+  - Word2Vec
+  - Orthogonal Procrustes
+preferred-citation:
+  type: article
+  title: "Mapping the Semantic Frontier of Bangla (1950–2025): A Hybrid N-gram and Procrustes-Aligned Embedding Analysis of Diachronic Lexical Change"
+  authors:
+    - family-names: Chanda
+      given-names: Sagor
+    - family-names: Roy
+      given-names: Shovon
+    - family-names: Ali
+      given-names: Muhammad Masroor
+  year: 2026
+  # journal / doi to be filled in on acceptance

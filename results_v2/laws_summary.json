@@ -1,0 +1,16 @@
+{
+  "pair": "1950_1970_vs_2010_2025",
+  "n_words": 10517,
+  "law1_frequency": {
+    "spearman_rho": -0.0565,
+    "p_value": 6.858013534607773e-09,
+    "significant": true,
+    "direction": "negative=conformity"
+  },
+  "law2_polysemy": {
+    "spearman_rho": -0.1937,
+    "p_value": 2.051949363837472e-89,
+    "significant": true,
+    "direction": "positive=innovation"
+  }
+}

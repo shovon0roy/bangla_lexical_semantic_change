@@ -1,0 +1,34 @@
+{
+  "params": {
+    "anchors": 5000,
+    "min_freq": 20,
+    "topk": 50
+  },
+  "pairs": {
+    "pre_1950_1950_1970": {
+      "anchors": 5000,
+      "scored_words": 11326,
+      "mean_change": 1.0768
+    },
+    "1950_1970_1970_1990": {
+      "anchors": 5000,
+      "scored_words": 13469,
+      "mean_change": 1.0558
+    },
+    "1970_1990_1990_2010": {
+      "anchors": 5000,
+      "scored_words": 18094,
+      "mean_change": 1.0416
+    },
+    "1990_2010_2010_2025": {
+      "anchors": 5000,
+      "scored_words": 14371,
+      "mean_change": 1.0933
+    },
+    "1950_1970_2010_2025": {
+      "anchors": 5000,
+      "scored_words": 10517,
+      "mean_change": 1.0936
+    }
+  }
+}

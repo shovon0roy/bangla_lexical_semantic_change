@@ -1,0 +1,59 @@
+{
+  "flagged_names": 114,
+  "configs": {
+    "all words (raw)": {
+      "n": 10517,
+      "floor": 0,
+      "names_excluded": false,
+      "law1_rho": -0.0565,
+      "law1_p": 6.851837394887681e-09,
+      "law2_rho": -0.1937,
+      "law2_p": 2.044472221374265e-89
+    },
+    "names excluded": {
+      "n": 10436,
+      "floor": 0,
+      "names_excluded": true,
+      "law1_rho": -0.0602,
+      "law1_p": 7.288181270304841e-10,
+      "law2_rho": -0.1979,
+      "law2_p": 1.1606417595047307e-92
+    },
+    "freq>=50, names excl": {
+      "n": 5604,
+      "floor": 50,
+      "names_excluded": true,
+      "law1_rho": -0.138,
+      "law1_p": 3.0724116058750676e-25,
+      "law2_rho": -0.29,
+      "law2_p": 5.445346769991166e-109
+    },
+    "freq>=100, names excl": {
+      "n": 3352,
+      "floor": 100,
+      "names_excluded": true,
+      "law1_rho": -0.17,
+      "law1_p": 3.824824754923572e-23,
+      "law2_rho": -0.3505,
+      "law2_p": 1.854167046891328e-97
+    },
+    "freq>=200, names excl": {
+      "n": 1937,
+      "floor": 200,
+      "names_excluded": true,
+      "law1_rho": -0.2155,
+      "law1_p": 8.556918702236866e-22,
+      "law2_rho": -0.4148,
+      "law2_p": 1.945223868072036e-81
+    },
+    "freq>=500, names excl": {
+      "n": 831,
+      "floor": 500,
+      "names_excluded": true,
+      "law1_rho": -0.2646,
+      "law1_p": 8.833407214281373e-15,
+      "law2_rho": -0.5115,
+      "law2_p": 1.3366014410672807e-56
+    }
+  }
+}

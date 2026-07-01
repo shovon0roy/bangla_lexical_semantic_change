@@ -1,0 +1,17 @@
+# --- Heavy artifacts: archived on Zenodo, not in the GitHub repo ---------------
+# These exceed GitHub's 100 MB per-file limit. The Zenodo DOI is the complete record.
+# If you want everything in one Git repo instead, delete these lines and use Git LFS.
+data_cleaned_v2/
+models_v2/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+*.swp
