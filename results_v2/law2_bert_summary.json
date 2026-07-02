@@ -1,0 +1,108 @@
+{
+  "model": "csebuetnlp/banglabert",
+  "eras": [
+    "1950_1970",
+    "2010_2025"
+  ],
+  "n_ctx": 50,
+  "min_ctx": 20,
+  "scorable_words": 970,
+  "tests": {
+    "validity_senses_vs_within_era_spread": {
+      "n": 970,
+      "spearman_rho": 0.1553,
+      "p": 1.167071609541898e-06,
+      "partial_rho_given_freq": 0.1554,
+      "by_freq_tertile": {
+        "low_freq": {
+          "rho": 0.1324,
+          "p": 0.01662952698719132,
+          "n": 327
+        },
+        "mid_freq": {
+          "rho": 0.1782,
+          "p": 0.001371006466821757,
+          "n": 320
+        },
+        "high_freq": {
+          "rho": 0.1679,
+          "p": 0.002461963283557936,
+          "n": 323
+        }
+      }
+    },
+    "senses_vs_raw_APD": {
+      "n": 970,
+      "spearman_rho": 0.1542,
+      "p": 1.3898276907674371e-06,
+      "partial_rho_given_freq": 0.1538,
+      "by_freq_tertile": {
+        "low_freq": {
+          "rho": 0.1329,
+          "p": 0.016219076167195833,
+          "n": 327
+        },
+        "mid_freq": {
+          "rho": 0.1644,
+          "p": 0.0031910943445943737,
+          "n": 320
+        },
+        "high_freq": {
+          "rho": 0.1699,
+          "p": 0.0021791742326598214,
+          "n": 323
+        }
+      }
+    },
+    "senses_vs_corrected_APD": {
+      "n": 970,
+      "spearman_rho": -0.0139,
+      "p": 0.6665651680301656,
+      "partial_rho_given_freq": -0.0099,
+      "by_freq_tertile": {
+        "low_freq": {
+          "rho": 0.0107,
+          "p": 0.8478201659593528,
+          "n": 327
+        },
+        "mid_freq": {
+          "rho": 0.0053,
+          "p": 0.9240848989160212,
+          "n": 320
+        },
+        "high_freq": {
+          "rho": -0.0491,
+          "p": 0.3791027335614507,
+          "n": 323
+        }
+      }
+    },
+    "senses_vs_clusterJSD": {
+      "n": 970,
+      "spearman_rho": -0.0239,
+      "p": 0.45657734899560803,
+      "partial_rho_given_freq": -0.0192,
+      "by_freq_tertile": {
+        "low_freq": {
+          "rho": -0.0065,
+          "p": 0.9061544479778083,
+          "n": 327
+        },
+        "mid_freq": {
+          "rho": -0.0189,
+          "p": 0.7364406959372384,
+          "n": 320
+        },
+        "high_freq": {
+          "rho": -0.0362,
+          "p": 0.5171496311141562,
+          "n": 323
+        }
+      }
+    }
+  },
+  "convergent_validity_correctedAPD_vs_ChangeScore": {
+    "spearman_rho": 0.3395,
+    "p": 1.3346683804164506e-27
+  }
+}

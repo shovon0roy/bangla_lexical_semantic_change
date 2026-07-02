@@ -82,7 +82,29 @@ differing from the original paper's null.
 neighbour graph) is only weakly and *negatively* correlated with change (ρ ≈ −0.06,
 p < 0.001 at working edge thresholds 0.55–0.65; the ρ≈0 seen at edge 0.45 is a degenerate
 all-in-one-cluster artefact) — never the positive the law predicts → Law of Innovation
-does NOT hold for Bangla. The paper reports ρ = −0.062 (sense-count, edge 0.60).
+does NOT hold for Bangla. The paper reports ρ = −0.066 (sense-count, edge 0.60, full shared vocabulary — the figure and the summary JSON now agree).
+
+## 6c. Law-2 artifact-free battery (dictionary senses + contextual embeddings)
+```bash
+.venv/bin/python src/embedding/law2_wordnet_v2.py          # Tests A/B + dispersion diagnostic
+.venv/bin/python src/embedding/law2_bert_v2.py             # BanglaBERT endpoint tests (raw/corrected APD)
+.venv/bin/python src/embedding/law2_bert_trajectory_v2.py  # all-five-era path/meander tests
+.venv/bin/python src/embedding/law2_bert_wsd_v2.py         # dictionary-sense WSD rebalancing test
+```
+Replaces the embedding-derived polysemy proxy with **IndoWordNet (Bengali) sense counts**
+(`pyiwn`; 4,329 of the 10,517 laws-vocabulary words match), and the change measure with
+(i) the ChangeScore, (ii) an embedding-free collocate JSD, and (iii) BanglaBERT
+occurrence-level APD with a **within-era baseline correction** (raw APD without that
+correction measures synchronic polysemy, not change). Findings
+(`law2_wordnet_summary.json`, `law2_bert_summary.json`): every fair test is null — the
+Law of Innovation does not hold on this corpus under any instrument; the earlier negative
+signs were proxy artifacts; dispersion shares only rho=0.15 with dictionary senses;
+corrected APD agrees with the static ChangeScore at rho=0.34 (convergent validity).
+NOTE: the BERT scripts sample raw sentences from `corpus_build/epub_dataset/` (the
+un-stemmed editions, not redistributed). The sampled context snippets ARE shipped in
+`results_v2/bert_cache/contexts*.json.gz`, so the encoding + analysis stages reproduce
+without the raw corpus; extraction itself requires it. Optional deps: see the extras
+block in `requirements-lock.txt`.
 
 ## 7. Case studies → `results_v2/`  *(done)*
 ```bash
@@ -111,15 +133,15 @@ known Sadhu→Cholito shift unsupervised. → `emergent_words.csv`, `declining_w
 PYTHONHASHSEED=0 .venv/bin/python src/embedding/spikers_v2.py   # name-filtered Spiker ranking → spikers_clean.csv
 PYTHONHASHSEED=0 .venv/bin/python src/make_figures_v2.py  # all 6 paper data-figures into book/figures/
 ```
-`collocates_v2.py` → `collocates_<word>.json` (window 5, min co-occur 3), feeds the heatmaps.
+`collocates_v2.py` → `collocates_<word>.json` (PPMI: window 5, min co-occur 3, clamped at 0; counts stem variants such as স্বাধীনত with স্বাধীনতা so genitive contexts are not lost), feeds the heatmaps.
 `spikers_v2.py` → `spikers_clean.csv`: words nearly absent pre-1990 (early pm < 1) ranked by
 modern pm, with seed+propagation name filter applied → paper's Spikers table (ট্রাম্প, উপজেলা,
 বিএনপি, বিশ্বকাপ, জামায়াত, …). `make_figures_v2.py` re-execs with `PYTHONHASHSEED=0`, uses a
 dual-script font (`DejaVu Sans` + `Kalpurush`), writes the 6 data figures the manuscript
 `\includegraphics` (same filenames): `changescore_distribution`, `frequency_trends`,
 `drift_digital` (UMAP), `heatmap_darun`, `heatmap_swadhinata`, `law_frequency` + `law_polysemy`.
-The দারুণ heatmap uses a curated, interpretable collocate set (negative-affect → appearance →
-sport); the others are automatic. Then compile `journal_paper/paper.tex` with XeLaTeX (2 passes).
+The দারুণ and স্বাধীনতা heatmaps use curated, interpretable collocate sets (dire→wonderful;
+anticolonial→commemoration→rights); the law figure uses the full shared vocabulary. Then compile `journal_paper/paper.tex` with XeLaTeX (2 passes).
 
 ---
 ### Determinism checklist

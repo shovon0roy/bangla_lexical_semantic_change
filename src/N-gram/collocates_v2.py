@@ -21,8 +21,16 @@ ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "data_cleaned_v2"
 OUT = ROOT / "results_v2"
 ERAS = ["pre_1950", "1950_1970", "1970_1990", "1990_2010", "2010_2025"]
-WINDOW, MIN_COOCC, TOPK = 5, 3, 12
+WINDOW, MIN_COOCC, TOPK = 5, 3, 25
 TARGETS = ["দারুণ", "স্বাধীনতা", "ডিজিটাল"]
+# The stemmer leaves some inflected forms as separate tokens (e.g. স্বাধীনতার -> স্বাধীনত,
+# ডিজিটালে stays ডিজিটালে), so a single-stem query would miss those contexts — the genitive
+# স্বাধীনতার যুদ্ধ above all. Count every variant as an occurrence of the display word.
+VARIANTS = {
+    "দারুণ": ["দারুণ"],
+    "স্বাধীনতা": ["স্বাধীনতা", "স্বাধীনত"],
+    "ডিজিটাল": ["ডিজিটাল", "ডিজিটালে"],
+}
 
 _dn = open(os.devnull, "w")
 _S = stemmer.BanglaStemmer()
@@ -49,16 +57,18 @@ def sentences(path):
     return out
 
 
-def pmi_for(target, sents, counts, ntok):
+def pmi_for(variants, sents, counts, ntok):
+    """PPMI of every word co-occurring (window +-WINDOW) with any variant of the target."""
+    vset = set(variants)
     occ = 0
     co = Counter()
     for s in sents:
         for i, t in enumerate(s):
-            if t == target:
+            if t in vset:
                 occ += 1
                 lo, hi = max(0, i - WINDOW), min(len(s), i + WINDOW + 1)
                 for c in s[lo:i] + s[i + 1:hi]:
-                    if c != target:
+                    if c not in vset:
                         co[c] += 1
     if occ == 0:
         return {}
@@ -70,13 +80,13 @@ def pmi_for(target, sents, counts, ntok):
         p_ct = n / windows
         p_c = counts[c] / ntok
         if p_ct > 0 and p_c > 0:
-            out[c] = math.log2(p_ct / p_c)
+            v = max(0.0, math.log2(p_ct / p_c))   # PPMI: clamp at zero (paper Eq.)
+            if v > 0:
+                out[c] = v
     return out
 
 
 def main():
-    targets = {t: stem(t) for t in TARGETS}
-    print("stemmed targets:", targets)
     per_era_pmi = {t: {} for t in TARGETS}
     for era in ERAS:
         fp = DATA / f"{era}.txt"
@@ -85,8 +95,8 @@ def main():
         sents = sentences(fp)
         flat = [w for s in sents for w in s]
         counts = Counter(flat); ntok = len(flat)
-        for disp, st in targets.items():
-            per_era_pmi[disp][era] = pmi_for(st, sents, counts, ntok)
+        for disp in TARGETS:
+            per_era_pmi[disp][era] = pmi_for(VARIANTS[disp], sents, counts, ntok)
         print(f"  {era}: done")
 
     for disp in TARGETS:

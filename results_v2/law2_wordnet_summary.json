@@ -1,0 +1,62 @@
+{
+  "wordnet_lemmas": 32251,
+  "matched": 4329,
+  "eras": [
+    "1950_1970",
+    "2010_2025"
+  ],
+  "window": 5,
+  "min_occ_jsd": 20,
+  "tests": {
+    "A_senses_vs_changescore": {
+      "n": 4329,
+      "spearman_rho": 0.0144,
+      "p": 0.34215035002016525,
+      "partial_rho_given_freq": 0.0288,
+      "by_freq_tertile": {
+        "low_freq": {
+          "rho": 0.0498,
+          "p": 0.05701263331368283,
+          "n": 1463
+        },
+        "mid_freq": {
+          "rho": 0.0294,
+          "p": 0.2668405527425573,
+          "n": 1427
+        },
+        "high_freq": {
+          "rho": 0.0053,
+          "p": 0.8412659456137124,
+          "n": 1439
+        }
+      }
+    },
+    "diagnostic_dispersion_vs_senses": {
+      "spearman_rho": 0.148,
+      "p": 1.2763034381760452e-22
+    },
+    "B_senses_vs_collocate_jsd": {
+      "n": 4328,
+      "spearman_rho": -0.2082,
+      "p": 1.3153610505825035e-43,
+      "partial_rho_given_freq": -0.0462,
+      "by_freq_tertile": {
+        "low_freq": {
+          "rho": -0.0452,
+          "p": 0.08427265111451201,
+          "n": 1463
+        },
+        "mid_freq": {
+          "rho": -0.0667,
+          "p": 0.011739234222695566,
+          "n": 1427
+        },
+        "high_freq": {
+          "rho": -0.1185,
+          "p": 6.56081054935683e-06,
+          "n": 1438
+        }
+      }
+    }
+  }
+}

@@ -16,9 +16,12 @@ version: "1.0.0"
 license: MIT
 identifiers:
   - type: doi
+    value: "10.5281/zenodo.21105864"
+    description: "This software archive (code, Zenodo)"
+  - type: doi
     value: "10.5281/zenodo.21100721"
     description: "Diachronic Bangla corpus, cleaned (Zenodo dataset)"
-repository-code: "https://github.com/shovon0roy/"   # update to the new repo URL
+repository-code: "https://github.com/shovon0roy/bangla_lexical_semantic_change"
 keywords:
   - lexical semantic change
   - diachronic word embeddings

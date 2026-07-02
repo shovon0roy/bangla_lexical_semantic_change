@@ -9,7 +9,7 @@ by Sagor Chanda, Shovon Roy, and Muhammad Masroor Ali
 This is the first computational study of how Bangla word meanings have shifted across
 its recent history. We build a large, time-stratified corpus (≈24M cleaned tokens,
 1950–2025 plus a pre-1950 anchor) from human-typed digital editions rather than OCR,
-and run a hybrid pipeline: an n-gram module (smoothed frequency + PPMI collocates) and
+and run a hybrid pipeline: an n-gram module (frequency + PPMI collocates) and
 an embedding module (per-era Word2Vec aligned by Orthogonal Procrustes, fused into a
 single ChangeScore). We test the two "universal laws" of semantic change on Bangla.
 
@@ -53,6 +53,14 @@ python src/N-gram/collocates_v2.py
 PYTHONHASHSEED=0 python src/make_figures_v2.py
 ```
 
+An optional battery of Law-of-Polysemy tests (IndoWordNet dictionary senses, an
+embedding-free collocate-JSD test, and BanglaBERT occurrence-level tests with
+within-era baseline corrections) lives in `src/embedding/law2_wordnet_v2.py` and
+`law2_bert_*.py`; see stage 6c of `REPRODUCE.md` and the optional-extras block in
+`requirements-lock.txt`. The sampled contexts these tests need are shipped in
+`results_v2/bert_cache/` (the raw un-stemmed editions themselves are not
+redistributed).
+
 Determinism: scripts re-exec with `PYTHONHASHSEED=0`, Word2Vec is trained with
 `workers=1` and a fixed seed, and numpy/random are seeded, so retraining on the same
 corpus reproduces the same models, tables, and figures.
@@ -86,9 +94,9 @@ extracted corpus (`data_cleaned_v2/`) and any local `models_v2/` out of the repo
 
 ## Citing
 
-If you use this work, please cite the paper and the dataset (see `CITATION.cff`).
-Dataset DOI: [10.5281/zenodo.21100721](https://doi.org/10.5281/zenodo.21100721).
-The code repository will receive its own DOI when archived via GitHub → Zenodo.
+If you use this work, please cite the paper (see `CITATION.cff`), and as appropriate:
+- **Code** (this repository): DOI [10.5281/zenodo.21105864](https://doi.org/10.5281/zenodo.21105864)
+- **Corpus** (dataset): DOI [10.5281/zenodo.21100721](https://doi.org/10.5281/zenodo.21100721)
 
 ## Contact
 

@@ -15,3 +15,7 @@ venv/
 .DS_Store
 Thumbs.db
 *.swp
+
+# BERT occurrence-vector caches are 125-250 MB each (GitHub-incompatible); they are
+# regenerated from results_v2/bert_cache/contexts*.json.gz by the law2_bert_* scripts.
+results_v2/bert_cache/vectors*.npz

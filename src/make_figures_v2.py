@@ -55,7 +55,7 @@ def stem(w):
 
 
 def save(fig, name):
-    fig.savefig(FIG / name, dpi=170, bbox_inches="tight")
+    fig.savefig(FIG / name, dpi=600, bbox_inches="tight")   # ACM final: >=600 dpi
     plt.close(fig)
     print("  wrote", name)
 
@@ -83,8 +83,10 @@ def fig_freqtrends():
             pm[w].append(c[sw[w]] / n * 1e6 if n else 0)
     fig, ax = plt.subplots(figsize=(7.5, 4.4))
     xs = range(len(ERAS))
-    for w in words:
-        ax.plot(xs, pm[w], marker="o", lw=2, label=w)
+    markers = ["o", "s", "^", "D"]           # distinct shapes + line styles so the four
+    styles = ["-", "--", "-.", ":"]          # lines stay distinguishable in greyscale (ACM)
+    for w, mk, ls in zip(words, markers, styles):
+        ax.plot(xs, pm[w], marker=mk, linestyle=ls, lw=2, markersize=7, label=w)
     ax.set_xticks(list(xs)); ax.set_xticklabels(ERA_LBL, rotation=15)
     ax.set_ylabel("frequency per million"); ax.legend()
     save(fig, "frequency_trends.jpg")
@@ -121,8 +123,8 @@ def fig_drift_digital():
     m = len(na)
     BLUE, RED = "#3b46c4", "#e23b34"
     fig, ax = plt.subplots(figsize=(11, 7.5))
-    ax.scatter(P[1:m, 0], P[1:m, 1], c=BLUE, s=46, label="1990–2010", zorder=3)
-    ax.scatter(P[m + 1:, 0], P[m + 1:, 1], c=RED, s=46, label="2010–25", zorder=3)
+    ax.scatter(P[1:m, 0], P[1:m, 1], c=BLUE, s=46, marker="o", label="1990–2010", zorder=3)
+    ax.scatter(P[m + 1:, 0], P[m + 1:, 1], c=RED, s=64, marker="s", label="2010–25", zorder=3)
     ax.scatter(P[0, 0], P[0, 1], c=BLUE, s=520, marker="*", edgecolor="white", lw=1, zorder=5)
     ax.scatter(P[m, 0], P[m, 1], c=RED, s=520, marker="*", edgecolor="white", lw=1, zorder=5)
     for i, x in enumerate(na):
@@ -159,7 +161,7 @@ def fig_heatmap(disp, fname, rows=None):
     im = ax.imshow(M, aspect="auto", cmap="YlGnBu")
     ax.set_xticks(range(len(ERAS))); ax.set_xticklabels(ERA_LBL, rotation=20)
     ax.set_yticks(range(len(cols))); ax.set_yticklabels(cols)
-    fig.colorbar(im, ax=ax, label="PMI")
+    fig.colorbar(im, ax=ax, label="PPMI")
     save(fig, fname)
 
 
@@ -193,9 +195,8 @@ def fig_laws():
     # graph at a threshold that actually splits senses). Box plot by sense-count.
     EDGE = 0.60
     kv1 = kv("1950_1970")
-    samp = [r for r in data if r["word"] in kv1]
-    random.shuffle(samp); samp = samp[:6000]
-    sc, ch = [], []
+    samp = [r for r in data if r["word"] in kv1]   # full shared vocabulary (no sampling),
+    sc, ch = [], []                                 # so the figure matches law2_polysemy_v2
     for r in samp:
         nb = [x for x, _ in kv1.most_similar(r["word"], topn=50)]
         if len(nb) < 5:
@@ -225,7 +226,11 @@ def main():
                   "অ্যাট্রাকটিভ", "হ্যান্ডসাম", "স্মার্ট", "ইন্টারেস্টিং",
                   "থ্রিলিং", "নৈপুণ্য", "ফিনিশিংয়ে", "ভলি"]
     fig_heatmap("দারুণ", "heatmap_darun.jpg", rows=darun_rows)
-    fig_heatmap("স্বাধীনতা", "heatmap_swadhinata.jpg")
+    # curated collocates for স্বাধীনতা: anticolonial (early) -> 1971 commemoration -> rights
+    swadhinata_rows = ["পরাধীনতা", "ব্রিটেনের", "ঐক্যবদ্ধ", "শহিদ", "অবাধ", "অর্থনৈতিক",
+                       "আন্দোলন", "সংগ্রাম", "সংগ্রামী", "বিসর্জন", "অর্জন", "দিবস", "দিবসে",
+                       "মুক্তিযুদ্ধে", "মতপ্রকাশ", "সার্বভৌমত্ব"]
+    fig_heatmap("স্বাধীনতা", "heatmap_swadhinata.jpg", rows=swadhinata_rows)
     fig_laws()
 
 

@@ -24,3 +24,10 @@ threadpoolctl==3.6.0
 tqdm==4.68.3
 umap-learn==0.5.12
 wrapt==2.2.2
+
+# --- optional extras: the Law-2 dictionary + contextual battery -----------------
+# (src/embedding/law2_wordnet_v2.py, law2_bert_v2.py, law2_bert_trajectory_v2.py)
+# Not needed for the core pipeline. Install only to reproduce those tests:
+#   pyiwn==0.0.5            (IndoWordNet Bengali sense counts; downloads ~31 MB data)
+#   torch==2.12.1           (CPU build is sufficient: --index-url https://download.pytorch.org/whl/cpu)
+#   transformers==5.12.1    (BanglaBERT: csebuetnlp/banglabert, ~440 MB on first use)
