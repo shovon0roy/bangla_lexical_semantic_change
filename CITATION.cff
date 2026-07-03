@@ -5,19 +5,21 @@ authors:
   - family-names: Chanda
     given-names: Sagor
     affiliation: "Bangladesh University of Engineering and Technology"
+    orcid: "https://orcid.org/0009-0003-8860-7316"
   - family-names: Roy
     given-names: Shovon
     affiliation: "Bangladesh University of Engineering and Technology"
+    orcid: "https://orcid.org/0009-0007-8474-3424"
   - family-names: Ali
     given-names: Muhammad Masroor
     affiliation: "Bangladesh University of Engineering and Technology"
 year: 2026
-version: "1.0.0"
+version: "1.1.0"
 license: MIT
 identifiers:
   - type: doi
-    value: "10.5281/zenodo.21105864"
-    description: "This software archive (code, Zenodo)"
+    value: "10.5281/zenodo.21141394"
+    description: "This software archive (code, v1.1.0, Zenodo)"
   - type: doi
     value: "10.5281/zenodo.21100721"
     description: "Diachronic Bangla corpus, cleaned (Zenodo dataset)"

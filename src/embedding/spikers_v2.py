@@ -1,5 +1,5 @@
 """v2 Spikers: words nearly absent in the early eras that surge in the modern era,
-ranked by modern smoothed frequency, with proper-noun (person/character name) leakage
+ranked by modern per-million frequency, with proper-noun (person/character name) leakage
 removed via the same seed+propagation flagger used in filter_propernouns_v2.py.
 
 A literary corpus makes raw frequency spikers dominated by character/person names

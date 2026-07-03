@@ -95,7 +95,7 @@ extracted corpus (`data_cleaned_v2/`) and any local `models_v2/` out of the repo
 ## Citing
 
 If you use this work, please cite the paper (see `CITATION.cff`), and as appropriate:
-- **Code** (this repository): DOI [10.5281/zenodo.21105864](https://doi.org/10.5281/zenodo.21105864)
+- **Code** (this repository, v1.1.0): DOI [10.5281/zenodo.21141394](https://doi.org/10.5281/zenodo.21141394)
 - **Corpus** (dataset): DOI [10.5281/zenodo.21100721](https://doi.org/10.5281/zenodo.21100721)
 
 ## Contact
